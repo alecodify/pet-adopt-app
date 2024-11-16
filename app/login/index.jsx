@@ -26,7 +26,7 @@ export default function Login() {
     const onPress = useCallback(async () => {
         try {
           const { createdSessionId, signIn, signUp, setActive } = await startOAuthFlow({
-            redirectUrl: Linking.createURL('/home', { scheme: 'myapp' }),
+            redirectUrl: Linking.createURL('/(tabs)', { scheme: 'myapp' }),
           })
     
           if (createdSessionId) {

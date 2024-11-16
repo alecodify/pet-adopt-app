@@ -8,7 +8,7 @@ export default function Index() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (user !== null) {
+    if (user !== null || undefined) {
       setIsLoggedIn(true);
     }
   }, [user]);
