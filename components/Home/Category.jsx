@@ -4,7 +4,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { database } from '@/config/FirebaseConfig';
 import Colors from '@/constants/Colors';
 
-export default function Category() {
+export default function Category({ category }) {
     const [data, setData] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('Fish');
 
@@ -24,7 +24,7 @@ export default function Category() {
     <View style={{marginTop: 20}}>
       <Text style={{fontFamily: 'outfit-medium', fontSize: 20}}>Category</Text>
       <FlatList data={data} numColumns={4} showsHorizontalScrollIndicator={false} renderItem={({item, index}) => (
-        <TouchableOpacity onPress={() => {setSelectedCategory(item.name)}} style={{flex: 1}}>
+        <TouchableOpacity onPress={() => {setSelectedCategory(item.name); category(item.name) }} style={{flex: 1}}>
             <View style={[styles.container, selectedCategory == item.name && styles.selectedCategoryStyle]}>
                 <Image source={{uri: item?.imageUrl}} style={{width: 40, height: 40,}}/>
             </View>
